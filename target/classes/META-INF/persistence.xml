@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+
+	
+	<!--  JPA 메인 환경 설정 파일
+	JPA는 무조건 persistence.xml 파일을 로딩하여, 이 파일의 
+	설정대로 동작함, 이 파일에는 영속성 유닛이 설정되어 있다.
+	이 영속성 유닛에 JPA가 연동할 데이터베이스 정보가 들어 있다. -->
+	
+	<!-- 연동하려는 데이터베이스가 여러 개면 <persistence-unit>을 여러 개 설정할 수 있다.-->
+	<persistence-unit name="Chapter04">
+		<class>com.himedia.domain.Board</class>
+		
+		
+		
+		<!-- JPA 구현체는 이 데이터 소스 설정을 참조하여 특정 데이터베이스와 커넥션을 연결할 수 있다. -->
+		<!-- JPA는 특정 데이터베이스에 최적화된 SQL을 생성하는데 어떤 Dialect가 설정되느냐에 따라 SQL 달라짐  -->
+		
+		<properties>
+		<!-- 필수 속성 -->
+			<property name="javax.persistence.jdbc.driverClass" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="javax.persistence.jdbc.url"	value="jdbc:h2:tcp://localhost/~/test" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+		
+		
+		<!-- 옵션 -->
+			<property name="hibernate.show_sql" value="true" />  <!-- 하이버네이트가 생성한 SQL을 콘솔에 출력  -->
+			<property name="hibernate.format_sql" value="true" /> <!-- SQL을 보기 좋은 포맷으로 출력  -->
+			<property name="hibernate.use_sql_comments" value="false" /> <!-- SQL에 포함된 주석도 같이 출력 -->
+			<property name="hibernate.id.new_generator_mappings" value="true" /> <!-- 키 생성 전략 사용-->
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- 테이블 생성(create)이나 변경(alter) 삭제(drop)같은 ddl구문을 자동으로 실행할지 결정 -->
+		</properties>
+		
+		
+		
+		
+		
+	
+	
+	</persistence-unit>
+	
+	
+</persistence>
