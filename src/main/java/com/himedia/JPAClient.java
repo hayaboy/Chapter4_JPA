@@ -26,7 +26,9 @@ public class JPAClient {
 		//JPA를 이용하여 실질적인 CRUD 기능을 처리하려면 EntityManager 객체를 사용. 그 객체의 persist()메서드를 이용하여 Board 엔티티에 설정된 값을 BOARD 테이블에 저장함
 		EntityManager em=emf.createEntityManager();	
 		
-		
+		//JPA가 실제 테이블에 등록/수정/삭제 작업을 처리하기 위해서는 해당 작업이 반드시 트랜잭션 안에서 수행되어야 한다. 
+				//만약 트랜잭션을 시작하지 않았거나 등록/수정/삭제 작업 이후에 트랜잭션을 종료하지 않으면 요청한 작업이 실제 데이터베이스에 반영되지 않는다.
+				// Transaction 생성
 		EntityTransaction tx = em.getTransaction();
 		
 		try {
@@ -45,7 +47,7 @@ public class JPAClient {
 			
 			
 			//글 등록
-//			em.persist(board);
+//			em.persist(board); // 영속한다.(비휘발성저장, insert)
 //			tx.commit();
 			
 			
