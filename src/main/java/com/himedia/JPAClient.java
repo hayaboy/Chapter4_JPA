@@ -34,7 +34,7 @@ public class JPAClient {
 		try {
 			
 			
-//			tx.begin();
+//			tx.begin(); zzz
 //			Board board=new Board();
 //			board.setTitle("JPA 제목2");
 //			board.setWriter("관리자2");
